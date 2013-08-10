@@ -3,37 +3,37 @@ from django.db import models
 
 
 class Manufacturers(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Название', blank=False, null=False)
+    name = models.CharField(max_length=100, verbose_name=u'Название')
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        db_table = 'manufacturers'
+        db_table = u'manufacturers'
 
 
-class Genre():
-    name = models.CharField(max_length=100, verbose_name='Название', blank=False, null=False)
+class Genres(models.Model):
+    name = models.CharField(max_length=100, verbose_name=u'Название')
 
     def __unicode__(self):
         return self.name
 
     class Meta:
-        db_table = 'manufacturers'
+        db_table = u'genres'
 
 
 class Products(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Название')
-    price = models.DecimalField(decimal_places=2, max_digits=99999, verbose_name='Цена', null=True)
-    count = models.IntegerField(verbose_name='Количество', default=0)
-    full_description = models.TextField(verbose_name='Описание')
-    brief_description = models.TextField(verbose_name='Краткое описание')
-    active = models.BooleanField(verbose_name='Активен', default=False)
+    name = models.CharField(max_length=100, verbose_name=u'Название')
+    price = models.DecimalField(decimal_places=2, max_digits=65, verbose_name=u'Цена', null=True)
+    count = models.IntegerField(verbose_name=u'Количество', default=0)
+    full_description = models.TextField(verbose_name=u'Описание')
+    brief_description = models.TextField(verbose_name=u'Краткое описание')
+    active = models.BooleanField(verbose_name=u'Активен', default=False)
     manufacturer = models.ForeignKey(Manufacturers)
+    genre = models.ForeignKey(Genres)
 
     class Meta:
-        db_table = 'products'
+        db_table = u'products'
 
     def __unicode__(self):
         return u'{}:{}'.format(self.manufacturer, self.name)
-        #manufacturer =
