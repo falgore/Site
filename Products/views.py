@@ -3,8 +3,14 @@
 from django.core.context_processors import csrf
 from django.shortcuts import render_to_response
 from Products.forms import ProductForm
+from django.utils.translation import activate
+activate('ru')
+
 
 def index(request):
+    print u'Hrllo'
+    if request.method == 'POST':
+        print request.POST
     if request.POST:
         form = ProductForm(request.POST)
         if form.is_valid():

@@ -29,8 +29,8 @@ class Products(models.Model):
     full_description = models.TextField(verbose_name=u'Описание')
     brief_description = models.TextField(verbose_name=u'Краткое описание')
     active = models.BooleanField(verbose_name=u'Активен', default=False)
-    manufacturer = models.ForeignKey(Manufacturers)
-    genre = models.ForeignKey(Genres)
+    manufacturer = models.ForeignKey(Manufacturers, null=True, default=None)
+    genre = models.ForeignKey(Genres, null=True, default=None)
 
     class Meta:
         db_table = u'products'
